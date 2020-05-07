@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   post 'sessions/create'
   get 'sessions/destroy'
   resources :users
-  root 'user#new'
+  root 'users#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

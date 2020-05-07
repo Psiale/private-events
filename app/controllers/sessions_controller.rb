@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
 
   def welcome
+    @user = User.find(session[:user_id])
   end
 
   def create
