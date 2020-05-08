@@ -5,7 +5,18 @@
   <%= @user.name %>
 </p>
 
-<p> <%= @user.event %></p>
+
+ <% if @user.hosted_events.exists?%>
+ <ul>
+<% @user.hosted_events do |h| %>
+  <li> <%= h.location %> </li>
+  <%end %>
+  </ul>
+  <% else %>
+  <p>No events hosted by  <%= @user.name %></p>
+
+<% end %> 
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

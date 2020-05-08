@@ -1,9 +1,6 @@
 <h1>Log in (no password needed!)</h1>
 <p>Just type in your username.</p>
 
-<% if flash[:error] then %>
-<p><%= flash[:error] %></p>
-<% end %>
 
 
 <%= render 'form', user: @user %>

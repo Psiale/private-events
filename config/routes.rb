@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get 'sessions/new'
   get 'sessions/welcome'
   post 'sessions/create'
