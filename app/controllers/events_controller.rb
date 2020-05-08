@@ -29,11 +29,12 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     unless session[:user_id].nil?
-
-    @event = Event.build(time: event_params[:time], location: event_params[:location], host_id: session[:user_id])
+      @user = User.find_by_id(session[:user_id])
+      @event = @user.hosted_events.build(time: event_params[:time], location: event_params[:location])
+    # @event = Event.build(time: event_params[:time], location: event_params[:location], host_id: session[:user_id])
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to user_path(session[:user_id]), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }

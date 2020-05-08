@@ -6,16 +6,15 @@
 </p>
 
 
- <% if @user.hosted_events.exists?%>
- <ul>
-<% @user.hosted_events do |h| %>
-  <li> <%= h.location %> </li>
-  <%end %>
+  <% if @user.hosted_events.exists?%>
+  <ul>
+    <% @user.hosted_events.each do |h| %>
+    <li> <%= h.location %>, <%= h.time %> </li>
+    <% end %>
   </ul>
   <% else %>
-  <p>No events hosted by  <%= @user.name %></p>
-
-<% end %> 
+    <p>No events hosted by  <%= @user.name %></p>
+  <% end %> 
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
