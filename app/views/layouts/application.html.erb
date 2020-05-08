@@ -12,9 +12,11 @@
   <body>
 
   <% if session[:user_id] %>
-  <%= link_to 'Log out', '/sessions/destroy'%>
+  <%= link_to 'Host new event', new_event_path %> | 
+  <%= link_to 'My hosted events', user_path(session[:user_id]) %> | 
+  <%= link_to 'Log out', sessions_destroy_path %>
   <% else %>
-  <%= link_to 'Sign up', new_user_path %>
+  <%= link_to 'Sign up', new_user_path %> | 
   <%= link_to 'Log in', sessions_new_path %>
   <% end %>
 
