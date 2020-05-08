@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
     user = User.find_by_name(params[:name])
     if user
       session[:user_id] = user.id
-      redirect_to "/sessions/welcome", notice: 'Success: You are now LOGGED IN!' 
+      redirect_to sessions_welcome_path, notice: 'Success: You are now LOGGED IN!' 
       # format.json { render :show, status: :created, location: @user }
     else
-      flash.now[:error] = "Who the HELL is #{params[:name]}???"
+      flash.now[:error] = "Who the HECK is #{params[:name]}??? That user name does not EXIST!!"
       render :new
       # format.html { render :new }
       # format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to "/sessions/welcome", notice: "Logged out!"
+    redirect_to new_user_path, notice: "Logged out!"
   end
 
   private

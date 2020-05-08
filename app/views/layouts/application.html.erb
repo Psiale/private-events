@@ -10,6 +10,14 @@
   </head>
 
   <body>
+
+  <% if session[:user_id] %>
+  <%= link_to 'Log out', '/sessions/destroy'%>
+  <% else %>
+  <%= link_to 'Sign up', new_user_path %>
+  <%= link_to 'Log in', sessions_new_path %>
+  <% end %>
+
     <% flash.each do |name, message| %>
     <div class="<%= name %>"><%= message %></div>
   <% end %>

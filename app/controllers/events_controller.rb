@@ -30,9 +30,7 @@ class EventsController < ApplicationController
   def create
     unless session[:user_id].nil?
 
-
-
-    @event = Event.new(event_params)
+    @event = Event.build(time: event_params[:time], location: event_params[:location], host_id: session[:user_ir=d])
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
