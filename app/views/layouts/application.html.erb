@@ -7,20 +7,38 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-mutate-approach="sync"></script>
   </head>
 
-  <body>
-
+  <body >
+  <nav class="navbar">
   <% if session[:user_id] %>
-  <%= link_to 'Host new event', new_event_path %> | 
-  <%= link_to 'My hosted events', user_path(session[:user_id]) %> | 
-  <%= link_to 'All events', events_path %> | 
-  <%= link_to 'Log out', sessions_destroy_path %>
+  
+  <div class="navbar-item">
+  <%= link_to 'Host new event', new_event_path, class: " button button-is-pistache has-text-black" %> 
+  </div>
+  <div class="navbar-item">
+  <%= link_to 'My hosted events', user_path(session[:user_id]) , class: " button button-is-pistache has-text-black "  %> 
+  </div>
+  <div class="navbar-item">
+  <%= link_to 'All events', events_path , class: " button button-is-pistache has-text-black "  %> 
+  </div>
+<div class = "navbar-end">
+    <div class="navbar-item">
+    <%= link_to 'Log out', sessions_destroy_path, class: " button  button-is-yellow has-text-dark  "%>
+    </div>
+</div>
   <% else %>
-  <%= link_to 'Sign up', new_user_path %> | 
-  <%= link_to 'Log in', sessions_new_path %>
+  <div class="navbar-end">
+  <div class="navbar-item">
+  <%= link_to 'Sign up', new_user_path, class: " button button-is-pistache has-text-black " %> 
+    </div>
+    <div class="navbar-item">
+  <%= link_to 'Log in', sessions_new_path, class: " button button-is-yellow has-text-dark  " %>
+  </div>
+  </div>
   <% end %>
-
+  </nav>
     <% flash.each do |name, message| %>
     <div class="<%= name %>"><%= message %></div>
   <% end %>

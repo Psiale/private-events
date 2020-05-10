@@ -1,0 +1,93 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import 'bulma';
+    $color-fuchsia: #ED3B83;
+    $color-fuchsia-hov: #ED6B9F;
+    $color-yellow:  #DFFA00;
+    $color-yellow-hov: #E8FC3F;
+    $color-pistache: #00B74A;
+    $color-pistache-hov: #37DB79;
+ @mixin fuchsia { 
+    background-color: $color-fuchsia;
+    &:hover {
+        background-color: $color-fuchsia-hov;
+    }
+  }
+
+  @mixin purple {
+    background-color: rgb(129, 50, 129);
+    &:hover {
+        background-color:  purple;
+    }
+  }
+
+  @mixin yellow {
+      background-color: $color-yellow;
+      &:hover {
+          background-color: $color-yellow-hov;
+      }
+  }
+
+  @mixin pistache {
+      background-color: $color-pistache;
+      &:hover {
+          background-color: $color-pistache-hov;
+      }
+  }
+  
+
+  .is-backgroundless {
+      background-color: none;
+      &:hover {
+          background-color: transparent;
+      }
+  }
+ 
+ .button-is-fuchsia {
+     @include fuchsia;
+ }
+
+ .is-fuchsia {
+     background-color: $color-fuchsia;
+ }
+ 
+ .has-text-fuchsia {
+   color: $color-fuchsia;
+ }
+ .has-text-yellow { 
+     color: $color-yellow;
+ }
+
+ .has-text-pistache {
+     color: $color-pistache;
+ }
+
+.button-is-pistache {
+    @include pistache;
+}
+
+.button-is-yellow {
+    @include yellow;
+}
+
+.has-border-colored {
+    border: .5px solid $color-fuchsia !important;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
