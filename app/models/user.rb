@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :event_attendances, foreign_key: :guest_id
   has_many :attended_events, through: :event_attendances
 
+
+  
+
   def upcoming_events
     self.attended_events.where(time: DateTime.now..)
   end
