@@ -13,7 +13,7 @@ class UsersController < ApplicationController
    if current_user
       # current_user = User.find_by_id(session[:user_id])
       @upcoming_events = current_user.upcoming_events
-      # @prev_events = current_user.previous_events.load
+      @prev_events = current_user.previous_events
     end
   end
 

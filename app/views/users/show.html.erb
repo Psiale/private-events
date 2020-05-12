@@ -7,11 +7,21 @@
 
 
   <% if @user.hosted_events.exists?%>
+
+  <em>Upcoming events</em>
   <ul>
-    <% @user.hosted_events.each do |h| %>
-    <li> <%= h.location %>, <%= h.time %> </li>
+    <% @upcoming_events.each do |h| %>
+    <li> <%= h.location %>, <%= h.time %>, <%= link_to 'Show', h %> </li>
     <% end %>
   </ul>
+
+  <em>Past events</em>
+  <ul>
+    <% @prev_events.each do |h| %>
+    <li> <%= h.location %>, <%= h.time %>, <%= link_to 'Show', h %> </li>
+    <% end %>
+  </ul>
+
   <% else %>
     <p>No events hosted by  <%= @user.name %></p>
   <% end %>

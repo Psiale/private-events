@@ -7,5 +7,12 @@
     <%end %>
 </ul>
 
+<em>Uninvited users</em>
+<ul>
+    <% @uninvited_users.each do |uninvited| %>
+        <%= uninvited.name, <%= link_to 'Invite', uninvited, @event, method: :invite %> %>
+    <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

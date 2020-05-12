@@ -5,13 +5,24 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-    @past_events = Event.past.load
-    @upcoming_events = Event.upcoming.load
+    @past_events = Event.past
+    @upcoming_events = Event.upcoming
+  end
+
+  # POST /events/Invite
+  def invite
+    # uninvited.id
+    
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    if @event.guests.count > 0
+      @uninvited_users = User.find(:all, :conditions => "id NOT IN(#{@event.guests.map(&:guest_id)})")
+    else
+      @uninvited_users = User.all
+    end
   end
 
   # GET /events/new

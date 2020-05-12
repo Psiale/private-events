@@ -8,10 +8,10 @@ class User < ApplicationRecord
   
 
   def upcoming_events
-    self.attended_events.where(time: DateTime.now..)
+    self.hosted_events.where(time: DateTime.now..)
   end
 
   def previous_events
-    self.attended_events.where(self.attended_events.arel_table[:time].lt(DateTime.now))
+    self.hosted_events.where(self.attended_events.arel_table[:time].lt(DateTime.now))
   end
 end
