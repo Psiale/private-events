@@ -14,7 +14,17 @@
   </ul>
   <% else %>
     <p>No events hosted by  <%= @user.name %></p>
-  <% end %> 
+  <% end %>
+
+  <% if @user.attended_events.exists? %>
+  <ul> 
+    <% @user.attended_events.each do |event| %>
+      <li> <%= event.location %> </li>
+    <%end %> 
+  </ul>
+  <% else %>
+    <p> No events attended by <%= @user.name %></p>
+  <% end %>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

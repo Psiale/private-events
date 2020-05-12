@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Event host: <%= @event.host.name %></h2> 
+<h2>Event host: <%= @event.host.name %></h2>
+<ul>
+    <% @event.guests.each do |g|  %>
+        <li> <%= g.name %> </li>
+    <%end %>
+</ul>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
