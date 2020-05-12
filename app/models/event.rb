@@ -5,4 +5,6 @@ class Event < ApplicationRecord
     has_many :guests, through: :event_attendances, source: :guest
 
     # need to fix the relationship alias, this is searching for a hosts table
+
+
 end
