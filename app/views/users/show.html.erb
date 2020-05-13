@@ -26,16 +26,31 @@
     <p>No events hosted by  <%= @user.name %></p>
   <% end %>
 
-  <% if @user.attended_events.exists? %>
+ <% if @user_invitations.exists? %>
   <ul> 
-    <% @user.attended_events.each do |event| %>
-      <li class = "box">The event is happening at:  <%= event.location %> </li>
+    <% @user_invitations.each do |event| %>
+      <li class = "box">
+      The event is happening at:  <%= event.location %>
+        <% if event.accepted %>
+         
+          Accepted invitation
+             <%= link_to 'Decline invitation', event_attendance_path(event_attendances: { accepted: false, attended_event_id: event.id}), method: :patch  %>
+         
+        <% else %>
+          
+              Pending invitation
+            <%= link_to 'Pending invitation', event_attendance_path(event_attendances: { accepted: true}), method: :patch %> 
+
+        <% end %>
+       </li>
+
+
+
     <%end %> 
   </ul>
   <% else %>
     <p> No events attended by <%= @user.name %></p>
   <% end %>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
