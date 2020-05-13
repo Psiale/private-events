@@ -14,16 +14,16 @@
  *= require_self
  */
  @import 'bulma';
-    $color-fuchsia: #ED3B83;
-    $color-fuchsia-hov: #ED6B9F;
+    $color-purple: #42036F;
+    $color-purple-hov: #A767D5;
     $color-yellow:  #DFFA00;
     $color-yellow-hov: #E8FC3F;
-    $color-pistache: #00B74A;
-    $color-pistache-hov: #37DB79;
- @mixin fuchsia { 
-    background-color: $color-fuchsia;
+    $color-lavanda: #6C8CD5;
+    $color-lavanda-hov: #06266F;
+ @mixin purple { 
+    background-color: $color-purple;
     &:hover {
-        background-color: $color-fuchsia-hov;
+        background-color: $color-purple-hov;
     }
   }
 
@@ -41,10 +41,10 @@
       }
   }
 
-  @mixin pistache {
-      background-color: $color-pistache;
+  @mixin lavanda {
+      background-color: $color-lavanda;
       &:hover {
-          background-color: $color-pistache-hov;
+          background-color: $color-lavanda-hov;
       }
   }
   
@@ -56,27 +56,35 @@
       }
   }
  
- .button-is-fuchsia {
-     @include fuchsia;
+ .button-is-purple {
+     @include purple;
  }
 
- .is-fuchsia {
-     background-color: $color-fuchsia;
+ .is-purple {
+     background-color: $color-purple;
  }
+
+ .notification-is-purple {
+     background-color: $color-purple-hov;
+ }
+
+ .notification:not(:last-child) {
+    margin-bottom: 0;
+}
  
- .has-text-fuchsia {
-   color: $color-fuchsia;
+ .has-text-purple {
+   color: $color-purple;
  }
  .has-text-yellow { 
      color: $color-yellow;
  }
 
- .has-text-pistache {
-     color: $color-pistache;
+ .has-text-lavanda {
+     color: $color-lavanda;
  }
 
-.button-is-pistache {
-    @include pistache;
+.button-is-lavanda {
+    @include lavanda;
 }
 
 .button-is-yellow {
@@ -84,7 +92,7 @@
 }
 
 .has-border-colored {
-    border: .5px solid $color-fuchsia !important;
+    border: .5px solid $color-purple !important;
 }
 
 .button-container {

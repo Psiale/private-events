@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+     # add a before_action when the user is not logged in so it redirects to the home 
     redirect_to new_user_path, notice: "Logged out!"
   end
 

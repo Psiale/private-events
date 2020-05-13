@@ -1,11 +1,19 @@
-<%= form_with(url: {action: :create}, local: true) do |form| %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class = "columns is-centered">
+  <div class = "column is-half ">
+    <div class="box has-border-colored">
+      <%= form_with(url: {action: :create}, local: true) do |form| %>
+        <div class="field">
+          <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
+          <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Batman" %>
+          <p class="help has-text-lavanda is-size-6">Just type in your user name</p>
+        </div>
 
-  <div class="actions">
-    <%= form.submit %>
+        <div class="actions button-container">
+          <%= form.submit "Submit", class: "button  has-text-white is-fullwidth  button-is-purple" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
+

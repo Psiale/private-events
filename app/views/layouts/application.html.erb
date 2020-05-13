@@ -15,13 +15,13 @@
   <% if session[:user_id] %>
   
   <div class="navbar-item">
-  <%= link_to 'Host new event', new_event_path, class: " button button-is-pistache has-text-black" %> 
+  <%= link_to 'Host new event', new_event_path, class: " button button-is-lavanda has-text-white" %> 
   </div>
   <div class="navbar-item">
-  <%= link_to 'My hosted events', user_path(session[:user_id]) , class: " button button-is-pistache has-text-black "  %> 
+  <%= link_to 'My hosted events', user_path(session[:user_id]) , class: " button button-is-lavanda has-text-white "  %> 
   </div>
   <div class="navbar-item">
-  <%= link_to 'All events', events_path , class: " button button-is-pistache has-text-black "  %> 
+  <%= link_to 'All events', events_path , class: " button button-is-lavanda has-text-white "  %> 
   </div>
 <div class = "navbar-end">
     <div class="navbar-item">
@@ -31,7 +31,7 @@
   <% else %>
   <div class="navbar-end">
   <div class="navbar-item">
-  <%= link_to 'Sign up', new_user_path, class: " button button-is-pistache has-text-black " %> 
+  <%= link_to 'Sign up', new_user_path, class: " button button-is-lavanda has-text-black " %> 
     </div>
     <div class="navbar-item">
   <%= link_to 'Log in', sessions_new_path, class: " button button-is-yellow has-text-dark  " %>
@@ -40,8 +40,24 @@
   <% end %>
   </nav>
     <% flash.each do |name, message| %>
-    <div class="<%= name %>"><%= message %></div>
+
+
+    <div class=" notification has-text-centered has-text-white notification-is-purple
+    <%= name %>"><%= message %>
+    <button class = "delete"></button>
+    </div>
   <% end %>
     <%= yield %>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+    </script>
   </body>
 </html>
