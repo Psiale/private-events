@@ -20,9 +20,10 @@ class EventsController < ApplicationController
   def show
     if @event.guests.count > 0
       invited = @event.guests.pluck(:guest_id)
-      @uninvited_users = User.where.not(id: invited)
+      invited.push(@event.host_id)
+      @uninvited_users = User.where.not(id: invited).load
     else
-      @uninvited_users = User.all
+      @uninvited_users = User.where.not(id: @event.host_id)
     end
   end
 
