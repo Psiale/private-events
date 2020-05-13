@@ -10,7 +10,7 @@
 <em>Uninvited users</em>
 <ul>
     <% @uninvited_users.each do |uninvited| %>
-        <%= uninvited.name, <%= link_to 'Invite', uninvited, @event, method: :invite %> %>
+        <%= uninvited.name %>, <%= link_to 'Invite', event_attendances_path(event_attendances: { attended_event_id: @event.id, guest_id: uninvited.id }), method: :create %> 
     <% end %>
 </ul>
 
