@@ -28,7 +28,8 @@ class EventAttendancesController < ApplicationController
     puts "Creating the invitation...!!!"
     respond_to do |format|
       if @event_attendance.save
-        format.html { redirect_to @event_attendance, notice: 'Event attendance was successfully created.' }
+        @event = Event.find_by_id(@event_attendance.attended_event_id)
+        format.html { redirect_to event_path(@event), notice: 'Event attendance was successfully created.' }
         format.json { render :show, status: :created, location: @event_attendance }
       else
         format.html { render :new }

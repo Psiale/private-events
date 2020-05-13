@@ -19,7 +19,8 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     if @event.guests.count > 0
-      @uninvited_users = User.find(:all, :conditions => "id NOT IN(#{@event.guests.map(&:guest_id)})")
+      invited = @event.guests.pluck(:guest_id)
+      @uninvited_users = User.where.not(id: invited)
     else
       @uninvited_users = User.all
     end

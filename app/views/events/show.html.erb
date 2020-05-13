@@ -3,16 +3,36 @@
 <h2>Event host: <%= @event.host.name %></h2>
 <ul>
     <% @event.guests.each do |g|  %>
-        <li> <%= g.name %> </li>
+        <li> <%= g.name %>  </li>
     <%end %>
 </ul>
 
 <em>Uninvited users</em>
-<ul>
-    <% @uninvited_users.each do |uninvited| %>
-        <%= uninvited.name %>, <%= link_to 'Invite', event_attendances_path(event_attendances: { attended_event_id: @event.id, guest_id: uninvited.id }), method: :create %> 
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span>Hover me</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+        <% @uninvited_users.each do |uninvited| %>
+    <div class="dropdown-item">
+        <li><%= uninvited.name %>, <%= link_to 'Invite', event_attendances_path(event_attendances: { attended_event_id: @event.id, guest_id: uninvited.id }), method: :create %> <span><i class = "fas fa-envelope"></i></span> </li>
+      </div>
+      <hr class="dropdown-divider">
     <% end %>
-</ul>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+
+
+<br/>
+<br/>

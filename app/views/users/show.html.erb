@@ -29,7 +29,7 @@
   <% if @user.attended_events.exists? %>
   <ul> 
     <% @user.attended_events.each do |event| %>
-      <li> <%= event.location %> </li>
+      <li class = "box">The event is happening at:  <%= event.location %> </li>
     <%end %> 
   </ul>
   <% else %>
