@@ -43,7 +43,7 @@ class EventAttendancesController < ApplicationController
   def update
     respond_to do |format|
       if @event_attendance.update(event_attendance_params)
-        format.html { redirect_to @event_attendance, notice: 'Event attendance was successfully updated.' }
+        format.html { redirect_to current_user, notice: 'Event attendance was successfully updated.' }
         format.json { render :show, status: :ok, location: @event_attendance }
       else
         format.html { render :edit }
@@ -67,6 +67,7 @@ class EventAttendancesController < ApplicationController
     def set_event_attendance
       @event_attendance = EventAttendance.find(params[:id])
     end
+    
 
     # Only allow a list of trusted parameters through.
     def event_attendance_params
