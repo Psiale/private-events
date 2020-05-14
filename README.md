@@ -5,10 +5,10 @@
 ## Screenshots
 
 ### Invite other users
-![Invite other users](screenshots/s2.png)
+![Invite other users](/screenshots/s2.png)
 
 ### Accept or decline the invitation
-![Accept or decline the invitation](screenshots/s1.png)
+![Accept or decline the invitation](/screenshots/s1.png)
 
 ### Prerequisites
 
