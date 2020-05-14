@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
   has_many :hosted_events, foreign_key: "host_id", class_name: "Event"
   
   has_many :event_attendances, foreign_key: :guest_id
