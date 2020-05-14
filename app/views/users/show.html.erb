@@ -26,8 +26,8 @@
     <p>No events hosted by  <%= @user.name %></p>
   <% end %>
 
- <% if @user_invitations.exists? %>
-  <ul> 
+  <% if @user_invitations.exists? %>
+    <ul> 
     <% @user_invitations.each do |event| %>
       <li class = "box">
       The event is happening at:  <%= event.location %>
