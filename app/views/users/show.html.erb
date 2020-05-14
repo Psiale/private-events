@@ -30,16 +30,16 @@
     <ul> 
     <% @user_invitations.each do |event| %>
       <li class = "box">
-      The event is happening at:  <%= event.location %>
+      The event is happening at:  <%= event.attended_event.location %>
         <% if event.accepted %>
-         
+         <h1><%= event.accepted %></h1>
           Accepted invitation
-             <%= link_to 'Decline invitation', event_attendance_path(event_attendances: { accepted: false, attended_event_id: event.id}), method: :patch  %>
-         
+             <%= link_to 'Decline invitation', event_attendance_path(event, event_attendances: { accepted: false, attended_event_id: event.id, guest_id: @user.id}), method: :patch  %>
+    
         <% else %>
           
               Pending invitation
-            <%= link_to 'Pending invitation', event_attendance_path(event_attendances: { accepted: true}), method: :patch %> 
+            <%= link_to 'Pending invitation', event_attendance_path(event, event_attendances: { accepted: true, attended_event_id: event.id, guest_id: @user.id}), method: :patch %> 
 
         <% end %>
        </li>
