@@ -5,52 +5,84 @@
   <%= @user.name %>
 </p>
 
+  <h1 class = "is-size-1 has-text-centered has-text-purple"> <%= @user.name %>'s Events </h1>
 
-  <% if @user.hosted_events.exists?%>
+  <br/>
 
-  <em>Upcoming events</em>
-  <ul>
-    <% @upcoming_events.each do |h| %>
-    <li> <%= h.location %>, <%= h.time %>, <%= link_to 'Show', h %> </li>
-    <% end %>
-  </ul>
-
-  <em>Past events</em>
-  <ul>
-    <% @prev_events.each do |h| %>
-    <li> <%= h.location %>, <%= h.time %>, <%= link_to 'Show', h %> </li>
-    <% end %>
-  </ul>
-
-  <% else %>
-    <p>No events hosted by  <%= @user.name %></p>
-  <% end %>
-
-  <% if @user_invitations.exists? %>
-    <ul> 
-    <% @user_invitations.each do |event| %>
-      <li class = "box">
-      The event is happening at:  <%= event.attended_event.location %>
-        <% if event.accepted %>
-         <h1><%= event.accepted %></h1>
-          Accepted invitation
-             <%= link_to 'Decline invitation', event_attendance_path(event, event_attendances: { accepted: false, attended_event_id: event.id, guest_id: @user.id}), method: :patch  %>
-    
-        <% else %>
+  <div class="columns is-centered is-multiline ">
+    <div class="column  ">
+      <div class ="box has-border-colored">
+        <% if @user.hosted_events.exists?%>
+  
+        <h2 class= " is-size-3 has-text-purple">Upcoming events</h2>
+        <div class = "column has-text-centered">
+          <div class ="list is-hoverable">
+            <% @upcoming_events.each do |h| %>
+            <a class = "list-item has-text-black has-text-black">Location:  <%= h.location %>
+            <br/>
+            Date: <%= h.time %> <%= link_to 'Show', h ,class: "button  has-text-white is-fullwidth  button-is-purple" %> </a>
+            <% end %>
+          </div>
+        </div>
+  
+        <br/>
+        <h2 class ="is-size-3 has-text-purple">Past events</h2>
+        
+       <div class = "list has-text-centered">
+          <% if !@prev_events.exists?%>
+              <a class ="list-item has-text-black"> No previous events exist</a>
+          <% else %>
+            <ul>
+              <% @prev_events.each do |h| %>
+              <div class = "list-item has-text-black"> Location: <%= h.location %>
+              <br/>
+              Date: <%= h.time %> <%= link_to 'Show', h %> </div>
+              <% end %>
+          <% end %>
           
-              Pending invitation
-            <%= link_to 'Pending invitation', event_attendance_path(event, event_attendances: { accepted: true, attended_event_id: event.id, guest_id: @user.id}), method: :patch %> 
-
+       </div>
+  
+        <% else %>
+          <p>No events hosted by  <%= @user.name %></p>
         <% end %>
-       </li>
+  
+        <br/>
+      </div>
+    </div>
 
 
+    <div class="column">
+        <div class = "box has-border-colored">
+          <% if @user_invitations.exists? %>
+          <h2 class ="is-size-3 has-text-purple"> Invitations to events</h2>
+            <div class = 'list has-text-centered'>
+              <% @user_invitations.each do |event| %>
+              
+                <a class = "list-item has-text-black">
+                Location:  <%= event.attended_event.location %>
+                  <% if event.accepted %>
+    
+                    Accepted invitation
+                      <%= link_to 'Decline ', event_attendance_path(event, event_attendances: { accepted: false, attended_event_id: event.id, guest_id: @user.id}), method: :patch , class: "button  has-text-white is-fullwidth  button-is-purple"  %>
+              
+                  <% else %>
+                        <br/>
+                        Pending invitation
+                      <%= link_to 'Accept', event_attendance_path(event, event_attendances: { accepted: true, attended_event_id: event.id, guest_id: @user.id}), method: :patch , class: "button  has-text-white is-fullwidth  button-is-purple" %> 
+    
+                  <% end %>
+                </a>
+  
+  
+  
+              <%end %> 
+            </div>
+          <% else %>
+          <div class="list">
 
-    <%end %> 
-  </ul>
-  <% else %>
-    <p> No events attended by <%= @user.name %></p>
-  <% end %>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+            <a class = "list-item has-text-black"> No events attended by <%= @user.name %></a>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
