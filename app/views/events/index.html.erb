@@ -1,47 +1,31 @@
-<p id="notice"><%= notice %></p>
+<h1 class= "has-text-centered is-danger is-size-1 has-text-purple">Events</h1>
 
-<h1>Events</h1>
+<div class = "columns is-centered">
+  <div class = "column is-half ">
+    <div class ="box has-border-colored  has-text-centered">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="4"> Upcoming events </th>
-    </tr>
-  </thead>
+      <h2 class="has-text-centered is-size-3">Upcoming events</h2>
 
-  <tbody>
-    <% @upcoming_events.each do |event| %>
-      <tr>
-        <td><%= event.location %></td>
-        <td><%= event.time %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="list is-hoverable">
+        <% @upcoming_events.each do |event| %>
+          <a class = "list-item has-text-black has-text-black">
+            Event at <%= event.location %>, <%= event.time %>
+            <%= link_to 'Show', event, class: "button  has-text-white is-fullwidth  button-is-purple" %>
+          </a>
+        <% end %>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="4"> Past events </th>
-    </tr>
-  </thead>
+      <h2 class="has-text-centered is-size-3">Past events</h2>
 
-  <tbody>
-    <% @past_events.each do |event| %>
-      <tr>
-        <td><%= event.location %></td>
-        <td><%= event.time %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="list is-hoverable">
+        <% @past_events.each do |event| %>
+          <a class = "list-item has-text-black has-text-black">
+            Event at <%= event.location %>, <%= event.time %>
+            <%= link_to 'Show', event, class: "button  has-text-white is-fullwidth  button-is-purple" %>
+          </a>
+        <% end %>
+      </div>
 
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+    </div>
+  </div>
+</div> 
