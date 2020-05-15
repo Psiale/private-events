@@ -63,12 +63,12 @@
                   <% if event.accepted %>
     
                     Accepted invitation
-                      <%= link_to 'Decline ', event_attendance_path(event, event_attendances: { accepted: false, attended_event_id: event.id, guest_id: @user.id}), method: :patch , class: "button  has-text-white is-fullwidth  button-is-purple"  %>
+                      <%= link_to 'Decline ', event_attendance_path(event, event_attendances: { accepted: false}), method: :patch , class: "button  has-text-white is-fullwidth  button-is-purple"  %>
               
                   <% else %>
                         <br/>
                         Pending invitation
-                      <%= link_to 'Accept', event_attendance_path(event, event_attendances: { accepted: true, attended_event_id: event.id, guest_id: @user.id}), method: :patch , class: "button  has-text-white is-fullwidth  button-is-purple" %> 
+                      <%= link_to 'Accept', event_attendance_path(event, event_attendances: { accepted: true}), method: :patch , class: "button  has-text-white is-fullwidth  button-is-purple" %> 
     
                   <% end %>
                 </a>
