@@ -10,8 +10,11 @@ RSpec.describe User, :type => :model do
     expect(User.new).to_not be_valid
   end
 
-  describe "Validations" do
-    it { should validate_presence_of(:name) }
-    # it { should validate_uniqueness_of(:name) }
-  end
+end
+
+RSpec.describe Event, :type => :model do
+  user = User.create(name: "Oscar")
+  event = User.hosted_event.create(location: "House", time: "12")
+
+  expect(event.user.name).to eql("Oscar")
 end
