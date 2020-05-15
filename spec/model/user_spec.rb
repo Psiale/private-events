@@ -9,4 +9,9 @@ RSpec.describe User, :type => :model do
   it "is not valid without a name" do
     expect(User.new).to_not be_valid
   end
+
+  describe "Validations" do
+    it { should validate_presence_of(:name) }
+    # it { should validate_uniqueness_of(:name) }
+  end
 end
