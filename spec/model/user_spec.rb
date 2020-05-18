@@ -14,7 +14,7 @@ end
 
 RSpec.describe Event, :type => :model do
   user = User.create(name: "Oscar")
-  event = User.hosted_event.create(location: "House", time: "12")
+  event = user.hosted_events.create(location: "House", time: "12")
 
   expect(event.user.name).to eql("Oscar")
 end

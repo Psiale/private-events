@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   def show
    if current_user
       # current_user = User.find_by_id(session[:user_id])
-      @user_invitations = @user.event_attendances
+      @user_invitations = @user.event_attendances.includes(:attended_event)
+      # @user_invitations = @user.event_attendances
       @upcoming_events = current_user.upcoming_events
       @prev_events = current_user.previous_events
     end
