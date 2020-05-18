@@ -53,7 +53,12 @@ RSpec.describe Event, :type => :model do
   it "shoulda validate " do
   user = User.create(name: "Oscar")
   event = user.hosted_events.create(location: "House", time: "12")
+<<<<<<< HEAD
   expect(event.host.name).to eql("Oscar")
   end
     
+=======
+
+  expect(event.user.name).to eql("Oscar")
+>>>>>>> 00a22a56884f940d4784c578df6afcc3a93cd050
 end
