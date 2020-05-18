@@ -33,11 +33,33 @@ RSpec.describe User, :type => :model do
     expect(t.macro).to eq(:has_many)
   end
 end
+
 RSpec.describe Event, :type => :model do
-  # model associations function test
-  it "shoulda validate " do
-  user = User.create(name: "Oscar")
-  event = user.hosted_events.create(location: "House", time: "12")
-  expect(event.host.name).to eql("Oscar")
+  subject { Event.new(location: "Home", time: "2020-05-18 19:46:03") }
+  #model constructor tests
+  it "is valid with valid attributes" do
+    expect(subject).to be_valid
   end
+  it "is not valid without valid attributes" do
+    subject.location = nil
+    expect(subject).to_not be_valid
+  end
+  it "should belong to host" do
+    t = Event.reflect_on_association(:host)
+    expect(t.macro).to eq(:belongs_to)
+  end
+  
 end
+
+RSpec.describe EventAttendance, :type => :model do
+
+end
+
+# RSpec.describe EventLogic, :type => :model do
+#   # model associations function test
+#   it "shoulda validate " do
+#   user = User.create(name: "Oscar")
+#   event = user.hosted_events.create(location: "House", time: "12")
+#   expect(event.host.name).to eql("Oscar")
+#   end
+# end
