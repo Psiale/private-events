@@ -10,7 +10,7 @@
   <br/>
 
   <div class="columns is-centered is-multiline ">
-    <div class="column  ">
+    <div class="column">
       <div class ="box has-border-colored">
         <% if @user.hosted_events.exists?%>
   
@@ -43,7 +43,9 @@
        </div>
   
         <% else %>
-          <p>No events hosted by  <%= @user.name %></p>
+        <div class="list"> 
+          <a class = "list-item has-text-black">No events hosted by  <%= @user.name %></a>
+          </div>
         <% end %>
   
         <br/>

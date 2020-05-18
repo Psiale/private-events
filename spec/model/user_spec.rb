@@ -3,18 +3,57 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
+  
+  subject { User.new(name: "Oscar")}
+
   it "is valid with valid attributes" do
-    expect(User.new(name: "Oscar")).to be_valid
+
+    #model constructor tests
+    expect(subject).to be_valid
   end
   it "is not valid without a name" do
-    expect(User.new).to_not be_valid
+    subject.name = nil
+    expect(subject).to_not be_valid
   end
 
+
+  it "is not valid if the name is not unique" do
+    oscar = User.create(name: "Oscar")
+    expect(subject).to_not be_valid
+  end
+
+  it "is valid if the name is unique" do
+    oscar = User.create(name: "Oscar")
+    subject.name = "Alexis"
+    expect(subject).to be_valid
+  end
+
+  # model associations test
+
+  it "should have many hosted_events" do
+    t = User.reflect_on_association(:hosted_events)
+    expect(t.macro).to eq(:has_many)
+  end
+
+  it "should have many attended_events" do
+
+    t = User.reflect_on_association(:attended_events)
+    expect(t.macro).to eq(:has_many)
+  end
+  it "should have many event_attendances" do
+
+    t = User.reflect_on_association(:event_attendances)
+    expect(t.macro).to eq(:has_many)
+  end
+  
 end
 
 RSpec.describe Event, :type => :model do
+  # model associations function test
+  it "shoulda validate " do
   user = User.create(name: "Oscar")
-  event = User.hosted_event.create(location: "House", time: "12")
-
-  expect(event.user.name).to eql("Oscar")
+  event = user.hosted_events.create(location: "House", time: "12")
+  expect(event.host.name).to eql("Oscar")
+  end
+    
 end
