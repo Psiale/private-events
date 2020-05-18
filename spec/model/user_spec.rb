@@ -15,7 +15,7 @@ RSpec.describe User, :type => :model do
     expect(subject).to_not be_valid
   end
   it "is valid if the name is unique" do
-    oscar = User.create(name: "Oscar")
+    oscar = User.create(name: "Oscar")  
     subject.name = "Alexis"
     expect(subject).to be_valid
   end
