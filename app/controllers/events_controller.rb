@@ -52,6 +52,7 @@ class EventsController < ApplicationController
         format.html { redirect_to user_path(session[:user_id]), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
+        flash.now[:notice] = "Could not create event."
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
