@@ -16,7 +16,7 @@ Follow the installation instructions [for Ruby](https://www.theodinproject.com/c
 
 ## Live Demo
 
-Check out the Heroku live demo [here]().
+Check out the Heroku live demo [here](https://whispering-shore-82646.herokuapp.com).
 
 ## Author
 
