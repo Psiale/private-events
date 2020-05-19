@@ -16,7 +16,7 @@ Follow the installation instructions [for Ruby](https://www.theodinproject.com/c
 
 ## Live Demo
 
-Check out the Heroku live demo [here](https://sheltered-forest-68415.herokuapp.com/).
+Check out the Heroku live demo [here]().
 
 ## Author
 
