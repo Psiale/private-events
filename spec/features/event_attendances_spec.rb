@@ -51,4 +51,3 @@ RSpec.describe 'Creating a new invitation', type: :feature do
     expect(page).to have_content('Event attendance was successfully updated.')
   end
 end
-
