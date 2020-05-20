@@ -1,26 +1,14 @@
 class EventAttendancesController < ApplicationController
   before_action :set_event_attendance, only: %i[show edit update destroy]
 
-  # GET /event_attendances
-  # GET /event_attendances.json
   def index
     @event_attendances = EventAttendance.all
   end
 
-  # GET /event_attendances/1
-  # GET /event_attendances/1.json
-  def show; end
-
-  # GET /event_attendances/new
   def new
     @event_attendance = EventAttendance.new
   end
 
-  # GET /event_attendances/1/edit
-  def edit; end
-
-  # POST /event_attendances
-  # POST /event_attendances.json
   def create
     @event_attendance = EventAttendance.new(event_attendance_params)
     puts 'Creating the invitation...!!!'
@@ -36,8 +24,6 @@ class EventAttendancesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /event_attendances/1
-  # PATCH/PUT /event_attendances/1.json
   def update
     respond_to do |format|
       if @event_attendance.update(event_attendance_params)
@@ -50,8 +36,6 @@ class EventAttendancesController < ApplicationController
     end
   end
 
-  # DELETE /event_attendances/1
-  # DELETE /event_attendances/1.json
   def destroy
     @event_attendance.destroy
     respond_to do |format|
@@ -62,12 +46,10 @@ class EventAttendancesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_event_attendance
     @event_attendance = EventAttendance.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def event_attendance_params
     params.require(:event_attendances).permit(:attended_event_id, :guest_id, :accepted)
   end

@@ -1,21 +1,12 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
-  # GET /events
-  # GET /events.json
   def index
     @events = Event.all
     @past_events = Event.past
     @upcoming_events = Event.upcoming
   end
 
-  # POST /events/Invite
-  def invite
-    # uninvited.id
-  end
-
-  # GET /events/1
-  # GET /events/1.json
   def show
     if @event.guests.count.positive?
       invited = @event.guests.pluck(:guest_id)
@@ -26,7 +17,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/new
   def new
     if session[:user_id].nil?
       redirect_to sessions_new_path, flash: { error: 'Insufficient rights!' }
@@ -35,17 +25,11 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events/1/edit
-  def edit; end
-
-  # POST /events
-  # POST /events.json
   def create
     return if session[:user_id].nil?
 
     @user = User.find_by_id(session[:user_id])
     @event = @user.hosted_events.build(time: event_params[:time], location: event_params[:location])
-    # @event = Event.build(time: event_params[:time], location: event_params[:location], host_id: session[:user_id])
     respond_to do |format|
       if @event.save
         format.html { redirect_to user_path(session[:user_id]), notice: 'Event was successfully created.' }
@@ -58,8 +42,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -72,8 +54,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     @event.destroy
     respond_to do |format|
@@ -84,12 +64,10 @@ class EventsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:time, :location)
   end

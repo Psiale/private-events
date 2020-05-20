@@ -1,8 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-    # user = @User.new
-  end
-
   def welcome
     @user = User.find(session[:user_id])
   end
@@ -12,18 +8,14 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       redirect_to sessions_welcome_path, notice: 'Success: You are now LOGGED IN!'
-      # format.json { render :show, status: :created, location: @user }
     else
       flash.now[:error] = "Who the HECK is #{params[:name]}??? That user name does not EXIST!!"
       render :new
-      # format.html { render :new }
-      # format.json { render json: @user.errors, status: :unprocessable_entity }
     end
   end
 
   def destroy
     session[:user_id] = nil
-    # add a before_action when the user is not logged in so it redirects to the home
     redirect_to new_user_path, notice: 'Logged out!'
   end
 
