@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     return if session[:user_id].nil?
 
     @user = User.find_by_id(session[:user_id])
-    @event = @user.hosted_events.build(time: event_params[:time], location: event_params[:location])
+    @event = @user.hosted_events.build(time: event_params[:time], location: event_params[:location]) #build
     respond_to do |format|
       if @event.save
         format.html { redirect_to user_path(session[:user_id]), notice: 'Event was successfully created.' }
