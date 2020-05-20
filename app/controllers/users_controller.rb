@@ -6,8 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    return unless current_user
-
     @user_invitations = @user.event_attendances.includes(:attended_event)
     @upcoming_events = current_user.upcoming_events
     @prev_events = current_user.previous_events
