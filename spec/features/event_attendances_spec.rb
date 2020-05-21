@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Creating a new invitation', type: :feature do
   before :each do
     create(:user, name: 'Alexis')
-    user1 = create(:user, name: 'Oscar') 
-    create(:event, host_id: user1.id )
+    user1 = create(:user, name: 'Oscar')
+    create(:event, host_id: user1.id)
 
     visit sessions_new_path
     fill_in 'Name', with: 'Oscar'
