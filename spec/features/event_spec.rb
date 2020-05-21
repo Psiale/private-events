@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Creating a new event', type: :feature do
   before :each do
-    User.create(name: 'Oscar')
+    create(:user, name: 'Oscar')
     visit sessions_new_path
     fill_in 'Name', with: 'Oscar'
     click_on 'Submit'
