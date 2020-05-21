@@ -1,9 +1,9 @@
 FactoryBot.define do
 
     # A sequence is used when you have a uniqueness validation
-    sequence :name do |n|
-        "Alexis#{n}"
-    end
+    # sequence :name do |n|
+    #     "Alexis#{n}"
+    # end
 
     factory :user do
         # you use generate to call the sequence
