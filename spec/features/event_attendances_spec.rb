@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Creating a new invitation', type: :feature do
   before :each do
-    user2 = create(:user, name: 'Alexis')
-    user1 = create(:user, name: 'Oscar')
-    event = create(:event, host_id: user1.id )
+    create(:user, name: 'Alexis')
+    user1 = create(:user, name: 'Oscar') 
+    create(:event, host_id: user1.id )
 
     visit sessions_new_path
     fill_in 'Name', with: 'Oscar'
