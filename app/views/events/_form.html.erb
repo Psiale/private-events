@@ -1,0 +1,35 @@
+
+
+
+<div class = "columns is-centered">
+  <div class = "column is-half ">
+    <%= form_with(model: event, local: true) do |form| %>
+  
+    
+  <div class ="box has-border-colored  ">
+    <div class="field">
+          <%= form.label :time, class: "label has-text-lavanda is-size-5" %>
+         <div class = "control ">
+         <%= form.datetime_local_field :time, class: "input  has-text-centered has-border-colored", placeholder: "Batman" %>
+         
+         <p class="help has-text-lavanda is-size-6">Select a date, please</p>
+         <br/>
+         <%= form.label :location, class: "label has-text-lavanda is-size-5" %>
+         
+         <div class="control">
+         <%= form.text_field :location , class: "input  has-text-centered has-border-colored", placeholder: "Your house, maybe?" %>
+         </div>
+         
+         </div>
+         <br/>
+        </div>
+      
+        <div class="actions button-container">
+
+          <%= form.submit "Submit", class: "button  has-text-white is-fullwidth  button-is-purple" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div> 

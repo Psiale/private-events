@@ -1,0 +1,120 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import 'bulma';
+    $color-purple: #42036F;
+    $color-purple-hov: #A767D5;
+    $color-yellow:  #DFFA00;
+    $color-yellow-hov: #E8FC3F;
+    $color-lavanda: #6C8CD5;
+    $color-lavanda-hov: #06266F;
+ @mixin purple { 
+    background-color: $color-purple;
+    &:hover {
+        background-color: $color-purple-hov;
+    }
+  }
+
+  @mixin purple {
+    background-color: rgb(129, 50, 129);
+    &:hover {
+        background-color:  purple;
+    }
+  }
+
+  @mixin yellow {
+      background-color: $color-yellow;
+      &:hover {
+          background-color: $color-yellow-hov;
+      }
+  }
+
+  @mixin lavanda {
+      background-color: $color-lavanda;
+      &:hover {
+          background-color: $color-lavanda-hov;
+      }
+  }
+  
+
+  .is-backgroundless {
+      background-color: none;
+      &:hover {
+          background-color: transparent;
+      }
+  }
+ 
+ .button-is-purple {
+     @include purple;
+ }
+
+ .is-purple {
+     background-color: $color-purple;
+ }
+
+ .notification-is-purple {
+     background-color: $color-purple-hov;
+ }
+
+ .notification:not(:last-child) {
+    margin-bottom: 0;
+}
+ 
+ .has-text-purple {
+   color: $color-purple;
+ }
+ .has-text-yellow { 
+     color: $color-yellow;
+ }
+
+ .has-text-lavanda {
+     color: $color-lavanda;
+ }
+
+.button-is-lavanda {
+    @include lavanda;
+}
+
+.button-is-yellow {
+    @include yellow;
+}
+
+.has-border-colored {
+    border: .5px solid $color-purple !important;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown {
+    width: 100%;
+  
+    .dropdown-trigger {
+      width: 100%
+    }
+  
+    .button {
+      display: flex;
+      width: 100%;
+      justify-content: space-between
+    }
+  
+  }
+
+  .dropdown-item {
+      width: 100%;
+  }

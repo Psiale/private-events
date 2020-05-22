@@ -1,0 +1,26 @@
+<div class = "columns is-centered">
+  <div class = "column is-half ">
+    <%= form_with(model: user, local: true) do |form| %>
+  
+    
+  <div class ="box has-border-colored  ">
+    <div class="field">
+          <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
+         <div class = "control ">
+         <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Batman" %>
+         
+         <p class="help has-text-lavanda is-size-6">Type your name, please</p>
+         
+         </div>
+         <br/>
+        </div>
+      
+        <div class="actions button-container">
+
+          <%= form.submit "Submit", class: "button  has-text-white is-fullwidth  button-is-purple" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div> 
