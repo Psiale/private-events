@@ -1,0 +1,14 @@
+
+
+<h1 class= "has-text-centered is-danger is-size-1 has-text-purple">New Event</h1>
+
+<%= render 'form', event: @event %>
+
+
+
+<div class ="column">
+    <button class=" button is-centered button-is-lavanda has-text-black  ">
+    <span class="icon is-small"><i class="fas fa-undo"></i></span>
+    <%= link_to 'Back', events_path, class: "is-backgroundless has-text-black " %>
+    </button>
+</div>
