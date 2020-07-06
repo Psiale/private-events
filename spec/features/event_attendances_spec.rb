@@ -5,11 +5,14 @@ RSpec.describe 'Creating a new invitation', type: :feature do
      create(:user)
     user1 = create(:user, name: 'Oscar')
     event = create(:event, host_id: user1.id )
-    # visit user_path(user1) -> undefined method 'upcoming_events' for nil:NilClass
-    #  visit user1 -> URI::InvalidURIError: bad URI(is not URI?)
+    puts event.time
+     visit user_path(user1) 
+    #  -> undefined method 'upcoming_events' for nil:NilClass
+    # visit user1
+      # -> URI::InvalidURIError: bad URI(is not URI?)
     # visit "/users/#{user1.id}"
 
-    
+
     # visit sessions_new_path
     # fill_in 'Name', with: 'Oscar'
     # click_on 'Submit'
