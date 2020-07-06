@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Creating a new invitation', type: :feature do
   before :each do
-     create(:user)
+    create(:user, name: 'Alexis')
     user1 = create(:user, name: 'Oscar')
+<<<<<<< HEAD
     event = create(:event, host_id: user1.id )
     puts event.time
      visit user_path(user1) 
@@ -20,7 +21,15 @@ RSpec.describe 'Creating a new invitation', type: :feature do
     # fill_in 'Location', with: 'Somewhere'
     # fill_in 'Time', with: DateTime.now + 2.day
     # click_on 'Submit'
+=======
+    create(:event, host_id: user1.id)
 
+    visit sessions_new_path
+    fill_in 'Name', with: 'Oscar'
+    click_on 'Submit'
+>>>>>>> 3eee68d41c895e73d86dcc982b34826614a33144
+
+    visit user_path(user1)
   end
   scenario 'Create a new invitation successfully' do
     click_on 'Show'

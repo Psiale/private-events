@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User session actions', type: :feature do
   before :each do
-    User.create(name: 'Oscar')
+    create(:user, name: 'Oscar')
   end
 
   scenario 'creating a user' do
