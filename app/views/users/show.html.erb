@@ -53,21 +53,21 @@
     <div class="column">
         <div class = "box has-border-colored">
           <% if @user_invitations.exists? %>
-          <h2 class ="is-size-3 has-text-purple"> Invitations to events</h2>
+          <h2 class ="is-size-2 has-text-purple"> Invitations to events</h2>
             <div class = 'list has-text-centered'>
               <% @user_invitations.each do |event| %>
               
-                <a class = "list-item has-text-black">
-                Location:  <%= event.attended_event.location %>
+                <a class = "is-size-3 list-item has-text-black">
+                Location:  <%= event.attended_event.location, class: "is-size-3" %>
                   <% if event.accepted %>
     
                     Accepted invitation
-                      <%= link_to 'Decline ', event_attendance_path(event, event_attendances: { accepted: false}), method: :patch , class: "button  has-text-white is-fullwidth  button-is-purple"  %>
+                      <%= link_to 'Decline ', event_attendance_path(event, event_attendances: { accepted: false}), method: :patch , class: "button is-size-3  has-text-white is-fullwidth  button-is-purple"  %>
               
                   <% else %>
                         <br/>
                         Pending invitation
-                      <%= link_to 'Accept', event_attendance_path(event, event_attendances: { accepted: true}), method: :patch , class: "button  has-text-white is-fullwidth  button-is-purple" %> 
+                      <%= link_to 'Accept', event_attendance_path(event, event_attendances: { accepted: true}), method: :patch , class: "button  has-text-white is-size-2 is-fullwidth  button-is-purple" %> 
     
                   <% end %>
                 </a>
