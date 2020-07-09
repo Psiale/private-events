@@ -6,7 +6,7 @@
 
   <br/>
 
-  <div class="columns is-centered is-multiline ">
+  <div class="columns is-desktop is-centered  is-multiline ">
     <div class="column">
       <div class ="box has-border-colored">
         <% if @user.hosted_events.exists?%>
@@ -41,7 +41,7 @@
   
         <% else %>
         <div class="list"> 
-          <a class = "list-item has-text-black">No events hosted by  <%= @user.name %></a>
+          <a class = "list-item has-text-black is-size-2 is-size-5-desktop">No events hosted by  <%= @user.name %></a>
           </div>
         <% end %>
   
@@ -79,7 +79,7 @@
           <% else %>
           <div class="list">
 
-            <a class = "list-item has-text-black"> No events attended by <%= @user.name %></a>
+            <a class = "list-item has-text-black is-size-2 is-size-5-desktop"> No events attended by <%= @user.name %></a>
             </div>
           <% end %>
         </div>

@@ -64,6 +64,13 @@
      background-color: $color-purple;
  }
 
+ .is-transparent {
+     background-color: transparent;
+        &:hover {
+            background-color: transparent;
+        }
+ }
+
  .notification-is-purple {
      background-color: $color-purple-hov;
  }
@@ -117,4 +124,13 @@
 
   .dropdown-item {
       width: 100%;
+  }
+
+  .navbar-item.is-mega {
+    position: static;
+  
+    .is-mega-menu-title {
+      margin-bottom: 0;
+      padding: .375rem 1rem;
+    }
   }

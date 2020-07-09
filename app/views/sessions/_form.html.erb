@@ -1,16 +1,17 @@
 
 <div class = "columns is-centered">
-  <div class = "column is-half ">
+  <div class = "column is-two-thirds is-half-desktop ">
     <div class="box has-border-colored">
       <%= form_with(url: {action: :create}, local: true) do |form| %>
         <div class="field">
-          <%= form.label :name, class: "label has-text-lavanda is-size-5" %>
-          <%= form.text_field :name, class: "input  has-text-centered has-border-colored", placeholder: "Batman" %>
-          <p class="help has-text-lavanda is-size-6">Just type in your user name</p>
+          <%= form.label :name, class: "label has-text-lavanda is-size-2 is-size-5-desktop" %>
+          <%= form.text_field :name, class: "input  has-text-centered is-size-3 is-size-6-desktop is-large is-medium-desktop has-border-colored", placeholder: "Batman" %>
+          <br>
+          <p class="help has-text-lavanda is-size-2 is-size-5-desktop ">Type in your user name</p>
         </div>
-
+          <br><br>
         <div class="actions button-container">
-          <%= form.submit "Submit", class: "button  has-text-white is-fullwidth  button-is-purple" %>
+          <%= form.submit "Submit", class: "button  has-text-white is-size-2 is-size-5-desktop is-fullwidth  button-is-purple" %>
         </div>
       <% end %>
     </div>

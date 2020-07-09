@@ -11,34 +11,72 @@
   </head>
 
   <body >
-  <nav class="navbar">
+  <nav class="navbar is-hidden-touch ">
   <% if session[:user_id] %>
   
-  <div class="navbar-item">
+  <div class="navbar-item is-hidden-touch">
   <%= link_to 'Host new event', new_event_path, class: " button button-is-lavanda has-text-white" %> 
   </div>
-  <div class="navbar-item">
+  <div class="navbar-item is-hidden-touch">
   <%= link_to 'My hosted events', user_path(session[:user_id]) , class: " button button-is-lavanda has-text-white "  %> 
   </div>
-  <div class="navbar-item">
+  <div class="navbar-item is-hidden-touch">
   <%= link_to 'All events', events_path , class: " button button-is-lavanda has-text-white "  %> 
   </div>
-<div class = "navbar-end">
+<div class = "navbar-end is-hidden-touch">
     <div class="navbar-item">
     <%= link_to 'Log out', sessions_destroy_path, class: " button  button-is-yellow has-text-dark  "%>
     </div>
 </div>
-  <% else %>
-  <div class="navbar-end">
+<% else %>
+</div>
+  <div class="navbar-end is-hidden-touch">
   <div class="navbar-item">
   <%= link_to 'Sign up', new_user_path, class: " button button-is-lavanda has-text-black " %> 
     </div>
-    <div class="navbar-item">
+    <div class="navbar-item ">
   <%= link_to 'Log in', sessions_new_path, class: " button button-is-yellow has-text-dark  " %>
   </div>
   </div>
   <% end %>
-  </nav>
+</nav>
+
+<nav class="navbar is-hidden-desktop ">
+  <div class="navbar-brand">
+
+    <div class="navbar-burger burger" data-target="navMenubd-example">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navMenubd-example" class="navbar-menu ">
+  <% if session[:user_id] %>
+  
+  <div class="navbar-item is-hidden-desktop ">
+  <%= link_to 'Host new event', new_event_path, class: " is-transparent has-text-link	 is-size-2 " %> 
+  </div>
+  <div class="navbar-item is-hidden-desktop ">
+  <%= link_to 'My hosted events', user_path(session[:user_id]) , class: " is-transparent has-text-link is-size-2 "  %> 
+  </div>
+  <div class="navbar-item is-hidden-desktop ">
+  <%= link_to 'All events', events_path , class: " is-transparent has-text-link	 is-size-2 "  %> 
+  </div>
+    <div class="navbar-item is-hidden-desktop">
+    <%= link_to 'Log out', sessions_destroy_path, class: " is-transparent has-text-link	 is-size-2 "%>
+    </div>
+<% else %>
+  <div class="navbar-item is-hidden-desktop">
+  <%= link_to 'Sign up', new_user_path, class: " is-transparent has-text-link	 is-size-2 " %> 
+    </div>
+    <div class="navbar-item is-hidden-desktop ">
+  <%= link_to 'Log in', sessions_new_path, class: " is-transparent has-text-link-dark is-size-2  " %>
+    </div>
+  <% end %>
+  </div>
+</nav>
+
     <% flash.each do |name, message| %>
 
 
@@ -60,6 +98,32 @@
       $notification.parentNode.removeChild($notification);
     });
   });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Get all "navbar-burger" elements
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any nav burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+
+        // Get the target from the "data-target" attribute
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+
+        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
 });
     </script>
   </body>
