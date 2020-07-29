@@ -58,7 +58,7 @@
               <% @user_invitations.each do |event| %>
               
                 <a class = "is-size-3 list-item has-text-black">
-                Location:  <%= event.attended_event.location, class: "is-size-3" %>
+                Location:  <%= event.attended_event.location  %>
                   <% if event.accepted %>
     
                     Accepted invitation
