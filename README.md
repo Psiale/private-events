@@ -29,6 +29,7 @@ Check out the Heroku live demo [here](https://guarded-dusk-24319.herokuapp.com).
 - Github: [@Psiale](https://github.com/Psiale)
 - Twitter: [@TFH_](https://twitter.com/TFH_)
 - Linkedin: [Alexis Sanchez](https://www.linkedin.com/in/alexis-sanchez-dev/)
+- Portafolio: [Alexis Sanchez](https://alexis-sanchez-dev.netlify.app)
 
 ## 🤝 Contributing
 
